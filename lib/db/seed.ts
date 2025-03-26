@@ -2,7 +2,7 @@ import { loadEnvConfig } from '@next/env'
 import { cwd } from 'process'
 import data from '../data'
 
-import Product from './models/product.models'
+import Product from './models/product.model'
 import { connectToDatabase } from '.'
 
 loadEnvConfig(cwd()) // to get env file infos
@@ -17,7 +17,6 @@ const main = async () => {
     console.log({ createdProducts, message: 'Seeded database successfully' })
 
     process.exit(0)
-
   } catch (error) {
     console.log('🚀 - main - error:', error)
     throw new Error('Failed to seed database')
