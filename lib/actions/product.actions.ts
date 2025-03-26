@@ -1,7 +1,7 @@
 'use server'
 
 import { connectToDatabase } from '../db'
-import Product from '../db/models/product.model'
+import Product, { IProduct } from '../db/models/product.model'
 
 
 export async function getAllCategories() {
@@ -11,7 +11,7 @@ export async function getAllCategories() {
   )
   return categories
 }
-
+// GET PRODUCTS FOR HOME CARD
 export async function getProductsForCard({
   tag,
   limit = 4,
@@ -35,4 +35,22 @@ export async function getProductsForCard({
     href: string
     image: string
   }[]
+}
+
+// GET PRODUCTS BY TAG
+export async function getProductsByTag({
+  tag,
+  limit = 10,
+}: {
+  tag: string
+  limit?: number
+}) {
+  await connectToDatabase()
+  const products = await Product.find({
+    tags: { $in: [tag] },
+    isPublished: true,
+  })
+    .sort({ createdAt: 'desc' })
+    .limit(limit)
+  return JSON.parse(JSON.stringify(products)) as IProduct[]
 }

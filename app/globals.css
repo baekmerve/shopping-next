@@ -98,7 +98,6 @@
   --chart-5: hsl(340 75% 55%);
 }
 
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -114,5 +113,8 @@
   }
   .h1-bold {
     @apply text-2xl font-bold lg:text-3xl;
+  }
+  .h2-bold {
+    @apply text-lg font-bold lg:text-xl;
   }
 }
