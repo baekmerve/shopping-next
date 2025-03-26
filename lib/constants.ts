@@ -3,3 +3,5 @@ export const APP_SLOGAN= process.env.NEXT_PUBLIC_APP_SLOGAN || "Spend less, shop
 export const APP_DESCRIPTION =
   process.env.NEXT_PUBLIC_APP_DESCRIPTION ||
   'Nextmall is a platform built with Next.js where you can buy and sell products online'
+
+  export const PAGE_SIZE = Number(process.env.PAGE_SIZE || 9)
